@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ideal Societies — Week 4 Tuesday: Research Question Workshop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FDFAF6;
+      --text: #1A1A1A;
+      --accent-orange: #E8451C;
+      --accent-pink: #E91E90;
+      --accent-yellow: #F5C518;
+      --accent-terra: #C4572A;
+      --accent-olive: #6B7D3A;
+      --surface: #FFFFFF;
+      --border: #E8E0D8;
+      --muted: #8C7E72;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Sans 3', 'Nunito Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .gradient-bar {
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange), var(--accent-yellow));
+    }
+
+    .header {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 1.5rem;
+    }
+    .header-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+    .header h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0.3rem 0 0.5rem;
+      color: var(--text);
+    }
+    .header .inquiry {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent-orange);
+      font-style: italic;
+    }
+    .header .meta {
+      margin-top: 0.8rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+    }
+
+    /* Progress strip */
+    .progress-strip {
+      display: flex;
+      gap: 0.4rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .progress-step {
+      flex: 1;
+      padding: 0.7rem 0.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+    .progress-step.active {
+      background: var(--accent-orange);
+      color: white;
+      border-color: var(--accent-orange);
+    }
+    .progress-step.done {
+      background: var(--accent-yellow);
+      color: var(--text);
+      border-color: var(--accent-yellow);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.6rem;
+      margin-bottom: 1.3rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .card h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.8rem;
+      color: var(--text);
+    }
+    .card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 1rem 0 0.5rem;
+      color: var(--accent-terra);
+    }
+
+    .step-number {
+      display: inline-block;
+      background: var(--accent-orange);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 32px;
+      font-weight: 700;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      margin-right: 0.6rem;
+      vertical-align: middle;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange));
+      color: white;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+    .badge.yellow {
+      background: var(--accent-yellow);
+      color: var(--text);
+    }
+    .badge.olive {
+      background: var(--accent-olive);
+      color: white;
+    }
+
+    .key-question {
+      background: #FFF8F0;
+      border-left: 4px solid var(--accent-orange);
+      padding: 1rem 1.2rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .highlight-box {
+      background: #FFF8F0;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      margin: 0.8rem 0;
+      border: 1px dashed var(--accent-orange);
+    }
+
+    /* Priority cards (from summative site) */
+    .priority-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+    .priority-card {
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .priority-card h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.3rem;
+    }
+    .priority-card.freedom { border-top: 3px solid var(--accent-orange); }
+    .priority-card.equality { border-top: 3px solid var(--accent-pink); }
+    .priority-card.survival { border-top: 3px solid var(--accent-olive); }
+    .priority-card.stability { border-top: 3px solid var(--accent-terra); }
+    .priority-card .factors {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+
+    /* Formula / anatomy diagram */
+    .formula {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      margin: 1.2rem 0;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .formula-piece {
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      color: white;
+    }
+    .formula-piece.stem { background: var(--accent-terra); }
+    .formula-piece.priority { background: var(--accent-orange); }
+    .formula-piece.factor { background: var(--accent-pink); }
+    .formula-piece.scope { background: var(--accent-olive); }
+    .formula-plus {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    /* Comparison table */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+    .compare-col {
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+    }
+    .compare-col.weak {
+      background: #FFF0EC;
+      border: 1px solid #F5C6B8;
+    }
+    .compare-col.strong {
+      background: #F0F5E8;
+      border: 1px solid #C4D9A8;
+    }
+    .compare-col h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    .compare-col.weak h4 { color: #B84A2F; }
+    .compare-col.strong h4 { color: #4A6A1F; }
+
+    /* Drafting input */
+    .draft-input {
+      width: 100%;
+      padding: 0.9rem;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      line-height: 1.5;
+      resize: vertical;
+      min-height: 80px;
+      transition: border-color 0.2s;
+      background: #FFFDFA;
+    }
+    .draft-input:focus {
+      outline: none;
+      border-color: var(--accent-orange);
+    }
+
+    .word-count {
+      text-align: right;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    /* Buttons */
+    .btn {
+      background: var(--accent-orange);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.3rem;
+      border-radius: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: var(--accent-pink);
+    }
+    .btn:disabled {
+      background: var(--border);
+      color: var(--muted);
+      cursor: not-allowed;
+    }
+    .btn-small {
+      padding: 0.5rem 0.9rem;
+      font-size: 0.85rem;
+    }
+
+    /* Checklist */
+    .checklist-item {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      padding: 0.6rem 0.8rem;
+      background: #FAF7F3;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .checklist-item:hover {
+      background: #F4EDE4;
+    }
+    .check-box {
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      margin-top: 2px;
+    }
+    .check-box.checked {
+      background: var(--accent-olive);
+      border-color: var(--accent-olive);
+    }
+    .check-box.checked::after {
+      content: '✓';
+      color: white;
+      font-weight: 700;
+    }
+    .checklist-item span { flex: 1; }
+
+    /* Accordion */
+    .accordion-header {
+      width: 100%;
+      background: #FAF7F3;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.7rem 1rem;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.6rem 0;
+    }
+    .accordion-header:hover {
+      background: #F4EDE4;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: #FFFDFA;
+      border-radius: 0 0 8px 8px;
+    }
+    .accordion-content.open {
+      max-height: 800px;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      margin-top: -0.6rem;
+      margin-bottom: 0.6rem;
+    }
+    .chevron {
+      transition: transform 0.2s;
+      font-size: 0.8rem;
+    }
+    .accordion-header[aria-expanded="true"] .chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Peer feedback protocol */
+    .protocol-step {
+      background: #FAF7F3;
+      border-left: 3px solid var(--accent-pink);
+      padding: 0.9rem 1rem;
+      border-radius: 6px;
+      margin-bottom: 0.7rem;
+    }
+    .protocol-step strong {
+      color: var(--accent-pink);
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.9rem;
+    }
+
+    /* Timer */
+    .timer-strip {
+      background: linear-gradient(90deg, var(--accent-yellow), var(--accent-orange));
+      color: var(--text);
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    /* Homework card */
+    .homework-card {
+      background: linear-gradient(135deg, #2a2a3e 0%, #3a2a3e 100%);
+      color: white;
+      border-radius: 12px;
+      padding: 1.6rem;
+      margin-bottom: 1.3rem;
+    }
+    .homework-card h2 {
+      color: white;
+      margin-bottom: 0.3rem;
+    }
+    .homework-card .homework-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-yellow);
+    }
+    .homework-card p { color: #E8E0D8; }
+    .homework-card strong { color: white; }
+    .homework-card a {
+      color: var(--accent-yellow);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 700px) {
+      .header h1 { font-size: 1.8rem; }
+      .compare { grid-template-columns: 1fr; }
+      .priority-grid { grid-template-columns: 1fr; }
+      .progress-step { font-size: 0.65rem; padding: 0.5rem 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="gradient-bar"></div>
+
+  <div class="header">
+    <div class="header-label">Ideal Societies · Week 4 · Tuesday Single</div>
+    <h1>Research Question Workshop</h1>
+    <div class="inquiry">How do you turn a topic into a question worth researching?</div>
+    <div class="meta">By the end of this lesson, you'll have drafted, received feedback on, and revised your own research question about one (or more) factors from the unit so far.</div>
+  </div>
+
+  <div class="container">
+
+    <!-- Progress strip -->
+    <div class="progress-strip">
+      <div class="progress-step active" id="p1">1 · Learn the shape</div>
+      <div class="progress-step" id="p2">2 · Draft</div>
+      <div class="progress-step" id="p3">3 · Peer feedback</div>
+      <div class="progress-step" id="p4">4 · Revise</div>
+    </div>
+
+    <!-- ==================== HOMEWORK (intro at start of class) ==================== -->
+    <div class="homework-card">
+      <div class="homework-label">⚑ Homework · Due before next Tuesday</div>
+      <h2>South Korea: Building a Democracy</h2>
+      <p style="margin-top:0.6rem;">Before the Week 5 Tuesday single, you need to complete the <strong>South Korea companion site</strong>. It has three parts:</p>
+      <ol style="margin:0.8rem 0 0.8rem 1.3rem;">
+        <li><strong>Warm-up:</strong> a short video clip of the December 2024 martial law declaration (and its reversal)</li>
+        <li><strong>Interactive timeline:</strong> four Korean presidents from Syngman Rhee to Roh Tae Woo — how did the country move from dictatorship to democracy?</li>
+        <li><strong>1987 June Protests article</strong> with guiding questions</li>
+      </ol>
+      <p style="margin-top:0.4rem;"><strong>Why it matters:</strong> next Tuesday's lesson builds directly off this. If you haven't done the homework, you won't be able to participate in the synthesis task. Give yourself about 45–60 minutes.</p>
+      <p style="margin-top:0.6rem; font-size:0.9rem;">Link: <strong>[Mrs. A to add link]</strong></p>
+    </div>
+
+    <!-- ==================== STEP 1: LEARN THE SHAPE ==================== -->
+    <div class="card" id="step1">
+      <h2><span class="step-number">1</span>What makes a research question researchable?</h2>
+      <p><span class="badge">~10 min</span> <span class="badge yellow">B.i scaffolding</span></p>
+
+      <p style="margin-top:0.8rem;">Your summative research paper in a few weeks will open with <strong>your own research question</strong>. That question will shape everything that follows — the sources you find, the evidence you use, the argument you build.</p>
+
+      <p style="margin-top:0.6rem;">Today's job is to <strong>practise writing one</strong>. Low stakes. Nothing you write today is locked in.</p>
+
+      <h3>The weak vs. strong test</h3>
+      <p>A research question isn't just "a question about your topic." Some questions are <strong>researchable</strong> — they push you to gather evidence and form an argument. Others dead-end quickly.</p>
+
+      <div class="compare">
+        <div class="compare-col weak">
+          <h4>✗ Dead-end question</h4>
+          <p style="font-style:italic;">"What is the HDI?"</p>
+          <p style="margin-top:0.4rem; font-size:0.9rem;">You can answer this in one sentence from a definition. There's nothing to argue about.</p>
+        </div>
+        <div class="compare-col strong">
+          <h4>✓ Researchable question</h4>
+          <p style="font-style:italic;">"To what extent does a high HDI guarantee a good quality of life for citizens?"</p>
+          <p style="margin-top:0.4rem; font-size:0.9rem;">You need evidence from multiple countries. Different sources will disagree. You'll have to take a position.</p>
+        </div>
+      </div>
+
+      <div class="compare" style="margin-top:0.8rem;">
+        <div class="compare-col weak">
+          <h4>✗ Dead-end question</h4>
+          <p style="font-style:italic;">"Is Norway a good country?"</p>
+          <p style="margin-top:0.4rem; font-size:0.9rem;">"Good" is too vague. Good for whom? Measured how? You'll flail.</p>
+        </div>
+        <div class="compare-col strong">
+          <h4>✓ Researchable question</h4>
+          <p style="font-style:italic;">"How does judicial independence in democracies like Norway protect the fairness citizens experience?"</p>
+          <p style="margin-top:0.4rem; font-size:0.9rem;">Specific factor (judicial independence). Specific outcome (fairness). Forces evidence.</p>
+        </div>
+      </div>
+
+      <h3>The anatomy of a strong research question</h3>
+      <p>Most strong research questions in social sciences have three or four parts:</p>
+
+      <div class="formula">
+        <div class="formula-piece stem">Question stem</div>
+        <span class="formula-plus">+</span>
+        <div class="formula-piece priority">Priority/angle</div>
+        <span class="formula-plus">+</span>
+        <div class="formula-piece factor">Factor(s)</div>
+        <span class="formula-plus">+</span>
+        <div class="formula-piece scope">Scope</div>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Example:</strong> <em>"To what extent</em> [stem] <em>does protecting individual freedoms</em> [priority] <em>depend on citizen participation and a free press</em> [factors] <em>in modern European democracies</em> [scope]<em>?"</em></p>
+      </div>
+
+      <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+        <span>Click for useful question stems</span>
+        <span class="chevron">▼</span>
+      </button>
+      <div class="accordion-content">
+        <p style="margin-bottom:0.5rem;">Strong research questions usually start with one of these stems. Each one pushes you to do something specific:</p>
+        <ul style="margin-left:1.2rem;">
+          <li><strong>To what extent…</strong> → forces you to weigh evidence for and against a claim (command term: <strong>evaluate</strong>)</li>
+          <li><strong>How does X affect Y…</strong> → forces you to explain a relationship (command term: <strong>explain</strong>)</li>
+          <li><strong>Why do some societies…</strong> → forces comparison and causal reasoning</li>
+          <li><strong>How effective is X in achieving Y…</strong> → forces judgement against criteria (command term: <strong>evaluate</strong>)</li>
+          <li><strong>What role does X play in…</strong> → forces you to connect one factor to a bigger system</li>
+        </ul>
+        <p style="margin-top:0.6rem; font-size:0.9rem; color:var(--muted);">Avoid "Is X good/bad?" and "Yes/no" questions — they collapse too quickly.</p>
+      </div>
+
+      <h3>The four priorities (from your summative)</h3>
+      <p>Your summative will ask you to pick a <strong>priority</strong> — the lens through which you argue what matters most. Practise with one of these today (or invent your own):</p>
+
+      <div class="priority-grid">
+        <div class="priority-card freedom">
+          <h4>Individual freedoms</h4>
+          <div class="factors">participation · free press · citizen voice · transparency</div>
+        </div>
+        <div class="priority-card equality">
+          <h4>Equal outcomes</h4>
+          <div class="factors">equity · fairness · health · knowledge · standard of living</div>
+        </div>
+        <div class="priority-card survival">
+          <h4>Long-term survival</h4>
+          <div class="factors">sustainability · innovation · resilience</div>
+        </div>
+        <div class="priority-card stability">
+          <h4>Stability & security</h4>
+          <div class="factors">governance · accountability · security · fairness</div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.2rem; text-align:right;">
+        <button class="btn btn-small" onclick="advanceStep(2)">I've got the shape → Continue to Step 2</button>
+      </div>
+    </div>
+
+    <!-- ==================== STEP 2: DRAFT ==================== -->
+    <div class="card" id="step2" style="opacity:0.5; pointer-events:none;">
+      <h2><span class="step-number">2</span>Draft your research question</h2>
+      <p><span class="badge">~10 min</span> <span class="badge yellow">Silent drafting</span></p>
+
+      <div class="timer-strip">⏱ Work silently. Typing time, not talking time.</div>
+
+      <p>Pick <strong>one factor</strong> (or a pair) from what we've studied so far:</p>
+      <p style="margin-top:0.3rem; font-size:0.95rem; color:var(--muted);"><em>Health · Education · Standard of Living · Equity · Fairness · Participation · (and whatever you uncover at the stations on Friday)</em></p>
+
+      <p style="margin-top:0.8rem;">Use the three boxes below to <strong>build</strong> your question step by step — not just type it out in one go. This is the same move we'll do for the real summative.</p>
+
+      <h3>A · Pick your priority</h3>
+      <p style="font-size:0.9rem; color:var(--muted); margin-bottom:0.4rem;">Which lens are you arguing from today? (One of the four, or your own.)</p>
+      <input type="text" class="draft-input" id="draftPriority" placeholder="e.g., Individual freedoms / Equal outcomes / my own: ..." style="min-height:50px;">
+
+      <h3>B · Name the factor(s)</h3>
+      <p style="font-size:0.9rem; color:var(--muted); margin-bottom:0.4rem;">Which factor from the unit are you focusing on? You can name one or two — not more for a 2–3 page paper.</p>
+      <input type="text" class="draft-input" id="draftFactor" placeholder="e.g., judicial independence / equity / citizen participation" style="min-height:50px;">
+
+      <h3>C · Write the full question</h3>
+      <p style="font-size:0.9rem; color:var(--muted); margin-bottom:0.4rem;">Now combine: question stem + priority + factor + scope. Aim for one clear sentence.</p>
+      <textarea class="draft-input" id="draftQuestion" placeholder="Type your full research question here..." oninput="countWords()"></textarea>
+      <div class="word-count"><span id="wordCount">0</span> words</div>
+
+      <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+        <span>Stuck? Click for sentence starters</span>
+        <span class="chevron">▼</span>
+      </button>
+      <div class="accordion-content">
+        <ul style="margin-left:1.2rem;">
+          <li><em>"To what extent does [factor] determine whether citizens experience [outcome] in [scope]?"</em></li>
+          <li><em>"How does [factor] protect [priority] in [scope]?"</em></li>
+          <li><em>"Why do some countries achieve high [outcome] despite low [factor]?"</em></li>
+          <li><em>"What role does [factor] play in creating fair societies, compared to [another factor]?"</em></li>
+          <li><em>"How effective is [factor] in ensuring [priority] for [specific group/region]?"</em></li>
+        </ul>
+      </div>
+
+      <div style="margin-top:1.2rem; text-align:right;">
+        <button class="btn btn-small" onclick="advanceStep(3)">Question drafted → Go to peer feedback</button>
+      </div>
+    </div>
+
+    <!-- ==================== STEP 3: PEER FEEDBACK ==================== -->
+    <div class="card" id="step3" style="opacity:0.5; pointer-events:none;">
+      <h2><span class="step-number">3</span>Peer feedback round</h2>
+      <p><span class="badge">~12 min</span> <span class="badge olive">Structured protocol</span></p>
+
+      <p style="margin-top:0.6rem;">You'll swap devices with a partner and <strong>type your feedback directly into their screen</strong>. Read the protocol <em>first</em>, then swap.</p>
+
+      <h3>The feedback protocol</h3>
+
+      <div class="protocol-step">
+        <strong>1 · Read silently</strong>
+        <p style="margin-top:0.3rem;">Read your partner's question twice. Don't talk yet. Don't type yet.</p>
+      </div>
+
+      <div class="protocol-step">
+        <strong>2 · Check the anatomy</strong>
+        <p style="margin-top:0.3rem;">Can you spot the four parts?</p>
+        <ul style="margin:0.4rem 0 0 1.2rem; font-size:0.95rem;">
+          <li>Question stem (To what extent / How does / Why do…)</li>
+          <li>Priority (which lens?)</li>
+          <li>Factor (which one from the unit?)</li>
+          <li>Scope (which country/region/timeframe?)</li>
+        </ul>
+        <p style="margin-top:0.3rem; font-size:0.95rem;">If a part is missing, <strong>name which one</strong>.</p>
+      </div>
+
+      <div class="protocol-step">
+        <strong>3 · Stress-test it</strong>
+        <p style="margin-top:0.3rem;">Ask yourself:</p>
+        <ul style="margin:0.4rem 0 0 1.2rem; font-size:0.95rem;">
+          <li>Could you answer this in one sentence from a definition? <em>If yes → too narrow.</em></li>
+          <li>Is it too big to answer in 2–3 pages? <em>If yes → too broad.</em></li>
+          <li>Would different sources disagree on the answer? <em>If no → not much to argue.</em></li>
+          <li>Does a command term (<strong>evaluate, explain, describe</strong>) fit naturally? <em>If no → the question may be fuzzy.</em></li>
+        </ul>
+      </div>
+
+      <div class="protocol-step">
+        <strong>4 · Type feedback in this exact form</strong>
+        <p style="margin-top:0.3rem;">Write <strong>exactly two things</strong>:</p>
+        <ol style="margin:0.4rem 0 0 1.3rem; font-size:0.95rem;">
+          <li><strong>One strength:</strong> "Your question works because ___."</li>
+          <li><strong>One specific suggestion:</strong> "I'd sharpen ___ by ___."</li>
+        </ol>
+        <p style="margin-top:0.4rem; font-size:0.9rem; color:var(--muted);"><em>No "great question!" No "looks good." Be specific.</em></p>
+      </div>
+
+      <!-- Swap mode banner -->
+      <div id="swapBanner" style="margin-top:1.5rem; padding:1rem 1.2rem; border-radius:8px; background:#FAF7F3; border:2px dashed var(--border); text-align:center;">
+        <p style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1.05rem; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:0.4rem;">🔄 Ready to swap?</p>
+        <p style="font-size:0.95rem; margin-bottom:0.7rem;">When Mrs. A says go, hand your device to your partner and they'll click the button below. This <strong>hides your own draft</strong> so your partner sees only what they need to see.</p>
+        <button class="btn" onclick="enterSwapMode()">I'm the partner — show me their question</button>
+      </div>
+
+      <!-- Partner view (hidden until swap) -->
+      <div id="partnerView" style="display:none;">
+        <div style="padding:0.9rem 1rem; background:linear-gradient(90deg, var(--accent-pink), var(--accent-orange)); color:white; border-radius:8px; margin:1rem 0;">
+          <p style="font-family:'Barlow Condensed',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:0.95rem;">👀 You are reading your partner's question</p>
+        </div>
+
+        <h3>Partner's research question</h3>
+        <div id="partnerQuestionDisplay" style="padding:1rem 1.2rem; background:#FFF8F0; border-left:4px solid var(--accent-orange); border-radius:6px; font-size:1.05rem; line-height:1.6; font-style:italic; min-height:60px; margin-bottom:1rem;">
+          <span style="color:var(--muted); font-style:italic;">(Their question will appear here — read it twice before typing anything.)</span>
+        </div>
+
+        <h3>Type your feedback here</h3>
+        <p style="font-size:0.9rem; color:var(--muted); margin-bottom:0.4rem;">Exactly two statements: one strength + one specific suggestion.</p>
+        <textarea class="draft-input" id="feedbackReceived" placeholder="Strength: Your question works because...&#10;Suggestion: I'd sharpen ___ by..."></textarea>
+
+        <div style="margin-top:1rem; padding:0.8rem 1rem; background:#FAF7F3; border-radius:8px; text-align:center;">
+          <p style="font-size:0.9rem; color:var(--muted); margin-bottom:0.5rem;">Done giving feedback? Hand the device back to its owner.</p>
+          <button class="btn btn-small" onclick="exitSwapMode()">Feedback given — hand back</button>
+        </div>
+      </div>
+
+      <div style="margin-top:1.2rem; text-align:right;">
+        <button class="btn btn-small" onclick="advanceStep(4)">Feedback received → Revise</button>
+      </div>
+    </div>
+
+    <!-- ==================== STEP 4: REVISE ==================== -->
+    <div class="card" id="step4" style="opacity:0.5; pointer-events:none;">
+      <h2><span class="step-number">4</span>Revise and submit</h2>
+      <p><span class="badge">~8 min</span> <span class="badge yellow">Final cut</span></p>
+
+      <p style="margin-top:0.6rem;">Now take what your partner told you and <strong>rewrite</strong> your question. You might keep it almost the same, or you might overhaul it — both are fine. The point is that your revised version is <strong>a deliberate choice</strong>, not an accident.</p>
+
+      <h3>Your revised research question</h3>
+      <textarea class="draft-input" id="revisedQuestion" placeholder="Rewrite your question here. Even if you keep most of it, type the whole thing out again."></textarea>
+
+      <h3>One-sentence reflection</h3>
+      <p style="font-size:0.9rem; color:var(--muted); margin-bottom:0.4rem;">Complete this sentence:</p>
+      <div class="highlight-box">
+        <em>"I changed my question by __________ because __________."</em>
+      </div>
+      <textarea class="draft-input" id="reflection" placeholder="I changed my question by... because..." style="min-height:60px;"></textarea>
+
+      <h3>Success check</h3>
+      <p style="font-size:0.9rem; color:var(--muted); margin-bottom:0.4rem;">Tick off anything your revised question does:</p>
+      <div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box" tabindex="0" role="checkbox" aria-checked="false"></div><span>Starts with a strong stem (To what extent / How does / Why do…)</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box" tabindex="0" role="checkbox" aria-checked="false"></div><span>Names at least one factor from the unit</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box" tabindex="0" role="checkbox" aria-checked="false"></div><span>Has a scope (country, region, or timeframe)</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box" tabindex="0" role="checkbox" aria-checked="false"></div><span>Can't be answered with a single dictionary definition</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box" tabindex="0" role="checkbox" aria-checked="false"></div><span>Would require evidence from more than one source to answer</span></div>
+      </div>
+
+      <div class="key-question" style="margin-top:1.2rem;">
+        <strong>Exit ticket:</strong> click the button below to copy your workshop output, then paste it into the shared document.
+      </div>
+
+      <div style="margin-top:1rem; text-align:center;">
+        <button class="btn" onclick="exportWorkshop()" id="exportBtn">📋 Copy my workshop output</button>
+        <p id="exportStatus" style="margin-top:0.6rem; font-size:0.9rem; color:var(--accent-olive); font-weight:600; min-height:1.2rem;"></p>
+      </div>
+
+      <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false" style="margin-top:1rem;">
+        <span>Preview what will be copied</span>
+        <span class="chevron">▼</span>
+      </button>
+      <div class="accordion-content">
+        <pre id="exportPreview" style="font-family:inherit; font-size:0.85rem; line-height:1.5; white-space:pre-wrap; padding:0.5rem;">(Fill in the boxes above and this preview will update.)</pre>
+      </div>
+    </div>
+
+    <!-- ==================== FINAL CARD ==================== -->
+    <div class="card" id="finalCard" style="display:none; border-left: 4px solid var(--accent-olive);">
+      <h2 style="color: var(--accent-olive);">✓ Workshop complete</h2>
+      <p>You've now practised the exact B.i move you'll do for your summative. A few things to remember:</p>
+      <ul style="margin:0.6rem 0 0.6rem 1.3rem;">
+        <li>Nothing from today is locked in. You can change direction for the summative.</li>
+        <li>Your summative question will probably be more developed than today's — you'll have more factors to choose from.</li>
+        <li>Peer feedback is how you'll catch the weaknesses in your own question. Use the same protocol.</li>
+      </ul>
+      <p style="margin-top:0.6rem;"><strong>On Friday:</strong> we'll uncover the next three factors at the stations. Each one is a potential seed for your summative research question — pay attention to which ones pull you in.</p>
+      <p style="margin-top:0.4rem;"><strong>Don't forget:</strong> the South Korea homework is due before next Tuesday.</p>
+    </div>
+
+  </div>
+
+  <div class="gradient-bar"></div>
+
+  <script>
+    // Step advancement
+    function advanceStep(n) {
+      for (let i = 1; i < n; i++) {
+        document.getElementById('p' + i).classList.remove('active');
+        document.getElementById('p' + i).classList.add('done');
+      }
+      if (n <= 4) {
+        document.getElementById('p' + n).classList.add('active');
+        document.getElementById('step' + n).style.opacity = '1';
+        document.getElementById('step' + n).style.pointerEvents = 'auto';
+        document.getElementById('step' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      if (n === 5 || (n === 4 && isStep4Done())) {
+        document.getElementById('finalCard').style.display = 'block';
+      }
+    }
+
+    function isStep4Done() {
+      return document.getElementById('revisedQuestion').value.trim().length > 0;
+    }
+
+    // Word counter
+    function countWords() {
+      const text = document.getElementById('draftQuestion').value.trim();
+      const words = text === '' ? 0 : text.split(/\s+/).length;
+      document.getElementById('wordCount').textContent = words;
+      updateExportPreview();
+    }
+
+    // Accordion
+    function toggleAccordion(btn) {
+      const content = btn.nextElementSibling;
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+      content.classList.toggle('open');
+    }
+
+    // Checklist
+    function toggleCheck(item) {
+      const box = item.querySelector('.check-box');
+      const checked = box.classList.toggle('checked');
+      box.setAttribute('aria-checked', checked);
+      if (checked) {
+        document.getElementById('finalCard').style.display = 'block';
+        document.getElementById('p4').classList.remove('active');
+        document.getElementById('p4').classList.add('done');
+      }
+    }
+
+    document.getElementById('revisedQuestion').addEventListener('blur', function() {
+      if (this.value.trim().length > 10) {
+        document.getElementById('finalCard').style.display = 'block';
+      }
+    });
+
+    // ---------- SWAP MODE ----------
+    // Elements that should be hidden when a partner is reviewing (so they don't
+    // see the owner's original work or influence it)
+    const SWAP_HIDE_IDS = ['step1', 'step2', 'step4', 'finalCard', 'swapBanner'];
+
+    function enterSwapMode() {
+      // Show the partner's question in the display area
+      const draft = document.getElementById('draftQuestion').value.trim();
+      const display = document.getElementById('partnerQuestionDisplay');
+      if (draft) {
+        display.innerHTML = draft;
+        display.style.color = 'var(--text)';
+        display.style.fontStyle = 'italic';
+      } else {
+        display.innerHTML = '<span style="color:var(--muted); font-style:italic;">(Your partner hasn\'t drafted a question yet — ask them to type one in Step 2 first.)</span>';
+      }
+
+      // Hide owner-only sections
+      SWAP_HIDE_IDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+
+      // Show partner view
+      document.getElementById('partnerView').style.display = 'block';
+      document.getElementById('partnerView').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function exitSwapMode() {
+      // Restore owner-only sections
+      SWAP_HIDE_IDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          if (id === 'finalCard') {
+            // Only show if previously triggered
+            if (document.getElementById('revisedQuestion').value.trim().length > 10) {
+              el.style.display = 'block';
+            }
+          } else {
+            el.style.display = '';
+          }
+        }
+      });
+
+      // Hide partner view
+      document.getElementById('partnerView').style.display = 'none';
+      document.getElementById('step3').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ---------- EXPORT ----------
+    function buildExportText() {
+      const name = ''; // left blank — students will add their name in the shared doc
+      const priority = document.getElementById('draftPriority').value.trim();
+      const factor = document.getElementById('draftFactor').value.trim();
+      const draft = document.getElementById('draftQuestion').value.trim();
+      const feedback = document.getElementById('feedbackReceived').value.trim();
+      const revised = document.getElementById('revisedQuestion').value.trim();
+      const reflection = document.getElementById('reflection').value.trim();
+
+      return [
+        '=== RESEARCH QUESTION WORKSHOP ===',
+        '',
+        'Priority (lens): ' + (priority || '—'),
+        'Factor(s): ' + (factor || '—'),
+        '',
+        '— DRAFT QUESTION —',
+        draft || '—',
+        '',
+        '— PARTNER FEEDBACK —',
+        feedback || '—',
+        '',
+        '— REVISED QUESTION —',
+        revised || '—',
+        '',
+        '— REFLECTION —',
+        reflection || '—',
+      ].join('\n');
+    }
+
+    function updateExportPreview() {
+      const preview = document.getElementById('exportPreview');
+      if (preview) preview.textContent = buildExportText();
+    }
+
+    function exportWorkshop() {
+      const text = buildExportText();
+      const status = document.getElementById('exportStatus');
+
+      // Try clipboard API first
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          status.textContent = '✓ Copied! Now paste into the shared document.';
+          setTimeout(() => { status.textContent = ''; }, 5000);
+        }).catch(() => fallbackCopy(text, status));
+      } else {
+        fallbackCopy(text, status);
+      }
+    }
+
+    function fallbackCopy(text, status) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        status.textContent = '✓ Copied! Now paste into the shared document.';
+        setTimeout(() => { status.textContent = ''; }, 5000);
+      } catch (e) {
+        status.textContent = 'Couldn\'t copy automatically — use the preview below.';
+        status.style.color = 'var(--accent-orange)';
+      }
+      document.body.removeChild(ta);
+    }
+
+    // Update preview as students type
+    ['draftPriority', 'draftFactor', 'draftQuestion', 'feedbackReceived', 'revisedQuestion', 'reflection']
+      .forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', updateExportPreview);
+      });
+  </script>
+</body>
+</html>
